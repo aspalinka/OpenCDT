@@ -1,0 +1,83 @@
+{
+  "name": "CHA2DS2-VASc",
+  "full_name": "Congestive Heart Failure, Hypertension, Age ≥75 (doubled), Diabetes, Stroke (doubled), Vascular Disease, Age 65-74, Sex Category",
+  "description": "Estimates stroke risk in patients with atrial fibrillation.",
+  "purpose": "Guide anticoagulation therapy decisions in non-valvular atrial fibrillation.",
+  "when_to_use": [
+    "Patients with non-valvular atrial fibrillation",
+    "Deciding whether to initiate anticoagulation therapy",
+    "Assessing thromboembolic risk"
+  ],
+  "when_not_to_use": [
+    "Patients with valvular atrial fibrillation (e.g., mitral stenosis)",
+    "Patients with prosthetic heart valves"
+  ],
+  "tags": ["atrial fibrillation", "stroke", "anticoagulation", "cardiology", "thromboembolism"],
+  "category": "Cardiology",
+  "items": [
+    {
+      "label": "chf",
+      "description": "Congestive heart failure (or left ventricular systolic dysfunction)",
+      "points": {"No": 0, "Yes": 1}
+    },
+    {
+      "label": "hypertension",
+      "description": "Hypertension (resting BP >140/90 mmHg on at least 2 occasions or current antihypertensive treatment)",
+      "points": {"No": 0, "Yes": 1}
+    },
+    {
+      "label": "age_75",
+      "description": "Age ≥75 years",
+      "points": {"No": 0, "Yes": 2}
+    },
+    {
+      "label": "diabetes",
+      "description": "Diabetes mellitus (fasting glucose >125 mg/dL or treatment with oral hypoglycemic agent and/or insulin)",
+      "points": {"No": 0, "Yes": 1}
+    },
+    {
+      "label": "stroke_tia",
+      "description": "Prior stroke, TIA, or thromboembolism",
+      "points": {"No": 0, "Yes": 2}
+    },
+    {
+      "label": "vascular_disease",
+      "description": "Vascular disease (prior MI, peripheral artery disease, or aortic plaque)",
+      "points": {"No": 0, "Yes": 1}
+    },
+    {
+      "label": "age_65_74",
+      "description": "Age 65-74 years",
+      "points": {"No": 0, "Yes": 1}
+    },
+    {
+      "label": "female",
+      "description": "Female sex",
+      "points": {"No": 0, "Yes": 1}
+    }
+  ],
+  "formula": "chf + hypertension + age_75 + diabetes + stroke_tia + vascular_disease + age_65_74 + female",
+  "min_score": 0,
+  "max_score": 9,
+  "interpretation": [
+    {"min_score": 0, "max_score": 0, "description": "Low risk — 0.2% annual stroke risk. Anticoagulation generally not recommended."},
+    {"min_score": 1, "max_score": 1, "description": "Low-moderate risk — 0.6% annual stroke risk. Consider anticoagulation (especially if not due to female sex alone)."},
+    {"min_score": 2, "max_score": 3, "description": "Moderate risk — 2.2-3.2% annual stroke risk. Oral anticoagulation recommended."},
+    {"min_score": 4, "max_score": 5, "description": "Moderate-high risk — 4.8-6.7% annual stroke risk. Oral anticoagulation recommended."},
+    {"min_score": 6, "max_score": 9, "description": "High risk — 7.2-12.2% annual stroke risk. Oral anticoagulation strongly recommended."}
+  ],
+  "references": [
+    {
+      "citation": "Lip GY, Nieuwlaat R, Pisters R, Lane DA, Crijns HJ. Refining clinical risk stratification for predicting stroke and thromboembolism in atrial fibrillation using a novel risk factor-based approach: the euro heart survey on atrial fibrillation. Chest. 2010;137(2):263-272.",
+      "pmid": "19762550",
+      "doi": "10.1378/chest.09-1584"
+    }
+  ],
+  "constraints": [
+    {
+      "item_labels": ["age_75", "age_65_74"],
+      "description": "Patient can only be in one age group"
+    }
+  ],
+  "notes": "A score of 1 in females due solely to sex category may not warrant anticoagulation. Age ≥75 and prior stroke/TIA carry the highest individual weights (2 points each)."
+}

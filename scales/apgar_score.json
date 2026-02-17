@@ -1,0 +1,103 @@
+{
+  "name": "APGAR Score",
+  "full_name": "APGAR Score",
+  "description": "Assesses neonates 1 and 5 minutes after birth.",
+  "purpose": "Convenient and validated method to report status of a newborn and response to resuscitation.",
+  "when_to_use": [
+    "Perform on every live newborn, regardless of gestational age, at 1 and 5 minutes of life.",
+    "60 seconds after complete delivery of the newborn was deemed the point of most marked depression.",
+    "Per Neonatal Resuscitation Program (NRP), scoring continues at 5 minute intervals until reaching a score of 7 or until 20 minutes of life is encountered.",
+    "Scored by any provider with direct patient contact at the specified time."
+  ],
+  "when_not_to_use": [
+    "Should NOT be used to predict individual risk of mortality and adverse neurologic outcome.",
+    "Should not dictate need for initial resuscitation or specific interventions."
+  ],
+  "tags": [
+    "neonatal",
+    "newborn",
+    "delivery",
+    "resuscitation",
+    "obstetrics",
+    "pediatrics",
+    "APGAR",
+    "birth"
+  ],
+  "category": "Neonatology",
+  "items": [
+    {
+      "label": "activity",
+      "description": "Activity/muscle tone",
+      "points": {
+        "Active": 2,
+        "Some extremity flexion": 1,
+        "Limp": 0
+      }
+    },
+    {
+      "label": "pulse",
+      "description": "Pulse",
+      "points": {
+        "≥100 BPM": 2,
+        "<100 BPM": 1,
+        "Absent": 0
+      }
+    },
+    {
+      "label": "grimace",
+      "description": "Grimace/reflex irritability",
+      "points": {
+        "Sneeze/cough": 2,
+        "Grimace": 1,
+        "None": 0
+      }
+    },
+    {
+      "label": "appearance",
+      "description": "Appearance/color",
+      "points": {
+        "All pink": 2,
+        "Blue extremities, pink body": 1,
+        "Blue/pale": 0
+      }
+    },
+    {
+      "label": "respirations",
+      "description": "Respirations",
+      "points": {
+        "Good/crying": 2,
+        "Irregular/slow": 1,
+        "Absent": 0
+      }
+    }
+  ],
+  "constraints": [],
+  "formula": "activity + pulse + grimace + appearance + respirations",
+  "min_score": 0,
+  "max_score": 10,
+  "interpretation": [
+    {
+      "min_score": 7,
+      "max_score": 10,
+      "description": "Reassuring; generally normal"
+    },
+    {
+      "min_score": 4,
+      "max_score": 6,
+      "description": "Moderately abnormal; fairly low"
+    },
+    {
+      "min_score": 0,
+      "max_score": 3,
+      "description": "Low; critically low, needs intervention"
+    }
+  ],
+  "references": [
+    {
+      "citation": "Apgar V. A proposal for a new method of evaluation of the newborn infant. Curr Res Anesth Analg. 1953 Jul-Aug;32(4):260-7.",
+      "pmid": "13083014",
+      "doi": null
+    }
+  ],
+  "notes": "The 5 criteria are not of equal significance. The original article noted that heart rate and respiratory effort were most important, while color was least important. To improve ease and utility, the criteria were not weighted for item importance. The 5 minute score is regarded as the better predictor of survival. If score is ≤5 at 5 minutes, obtain an umbilical artery blood gas. A score of 0 at 10 minutes may help decide whether continued resuscitative efforts are indicated due to poor prognosis. Per NRP protocol, resuscitation should commence prior to 1 minute, so APGAR score should not dictate need for initial resuscitation or specific interventions."
+}

@@ -1,0 +1,89 @@
+{
+  "name": "4Ts Score for Heparin-Induced Thrombocytopenia",
+  "full_name": "4Ts Score for Heparin-Induced Thrombocytopenia",
+  "description": "Differentiates patients with HIT from those with other causes of thrombocytopenia.",
+  "purpose": "Diagnosis - stratify patients' risk for heparin-induced thrombocytopenia (HIT) in patients with thrombocytopenia who are currently or were recently on heparin derived agents.",
+  "when_to_use": [
+    "Patients with thrombocytopenia who are currently or were recently on heparin derived agents"
+  ],
+  "when_not_to_use": null,
+  "tags": [
+    "HIT",
+    "heparin-induced thrombocytopenia",
+    "thrombocytopenia",
+    "heparin",
+    "bleeding",
+    "hemorrhage",
+    "critical care",
+    "emergency medicine",
+    "hematology"
+  ],
+  "category": "Hematology and Oncology",
+  "items": [
+    {
+      "label": "thrombocytopenia",
+      "description": "Degree of platelet count fall and platelet nadir",
+      "points": {
+        "Platelet count fall >50% AND platelet nadir ≥20 × 10^9 L^-1": 2,
+        "Platelet count fall 30–50% OR platelet nadir 10–19 × 10^9 L^-1": 1,
+        "Platelet count fall <30% OR platelet nadir <10 × 10^9 L^-1": 0
+      }
+    },
+    {
+      "label": "platelet_fall_timing",
+      "description": "Timing of platelet count fall relative to heparin exposure",
+      "points": {
+        "Clear onset between days 5–10 OR platelet fall ≤1 day (prior heparin exposure within 30 days)": 2,
+        "Consistent with days 5–10 fall, but not clear (e.g. missing platelet counts) OR onset after day 10 OR fall ≤1 day (prior heparin exposure 30–100 days ago)": 1,
+        "Platelet count fall <4 days without recent heparin exposure": 0
+      }
+    },
+    {
+      "label": "thrombosis",
+      "description": "Thrombosis or other sequelae",
+      "points": {
+        "New thrombosis (confirmed) OR skin necrosis at heparin injection sites OR acute systemic reaction after intravenous heparin bolus": 2,
+        "Progressive or recurrent thrombosis or nonnecrotizing (erythematous) skin lesions or suspected thrombosis (not proven)": 1,
+        "None": 0
+      }
+    },
+    {
+      "label": "other_causes_thrombocytopenia",
+      "description": "Other causes for thrombocytopenia",
+      "points": {
+        "None apparent": 2,
+        "Possible": 1,
+        "Definite": 0
+      }
+    }
+  ],
+  "constraints": [],
+  "formula": "thrombocytopenia + platelet_fall_timing + thrombosis + other_causes_thrombocytopenia",
+  "min_score": 0,
+  "max_score": 8,
+  "interpretation": [
+    {
+      "min_score": 0,
+      "max_score": 3,
+      "description": "Low probability for HIT. HIT is unlikely but continue to monitor platelet counts. Consider hematology consultation if HIT remains on the differential despite the low score. Evaluate for other causes of thrombocytopenia."
+    },
+    {
+      "min_score": 4,
+      "max_score": 5,
+      "description": "Intermediate probability (~14% probability of HIT). HIT is possible. Consider immediate discontinuation of heparin products and initiation of alternative anticoagulation therapy if medically indicated. Continue to monitor platelet counts. Order HIT antibody (PF4 ELISA) and confirmatory testing (with the serotonin release assay) as indicated. Consider consultation with hematology."
+    },
+    {
+      "min_score": 6,
+      "max_score": 8,
+      "description": "High probability (~64% probability of HIT). HIT is likely. Immediate discontinuation of heparin products is recommended, and alternative anticoagulation should be started. Consultation with hematology is recommended. Order confirmatory lab work with ELISA and SRA. Continue to monitor platelet counts, and monitor for signs and symptoms of developing thrombosis."
+    }
+  ],
+  "references": [
+    {
+      "citation": "Lo GK, Juhl D, Warkentin TE, Sigouin CS, Eichler P, Greinacher A. Evaluation of pretest clinical score (4 T's) for the diagnosis of heparin-induced thrombocytopenia in two clinical settings. J Thromb Haemost. 2006 Apr;4(4):759-65.",
+      "pmid": "16634744",
+      "doi": "10.1111/j.1538-7836.2006.01787.x"
+    }
+  ],
+  "notes": "One of the four components, other causes for thrombocytopenia, is subjective. A subsequent review and meta-analysis of the 4Ts scoring system for HIT found that patients in the low-risk group had a negative predictive value of 0.998, irrespective of type of clinician, prevalence of HIT, or patient population."
+}

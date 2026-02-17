@@ -1,0 +1,90 @@
+{
+  "name": "Pediatric Glasgow Coma Scale",
+  "full_name": "Pediatric Glasgow Coma Scale (pGCS)",
+  "description": "Assesses impaired consciousness and coma in pediatric patients.",
+  "purpose": "Diagnosis of impaired consciousness and coma in preverbal children",
+  "when_to_use": [
+    "Infants with head trauma, altered mental status or neurologic abnormalities",
+    "Use in initial and serial assessments",
+    "Children 2 years and younger"
+  ],
+  "when_not_to_use": [
+    "Children older than 2 years (use the standard Glasgow Coma Scale instead)"
+  ],
+  "tags": [
+    "pediatric",
+    "GCS",
+    "Glasgow Coma Scale",
+    "head trauma",
+    "altered mental status",
+    "traumatic brain injury",
+    "consciousness",
+    "coma",
+    "preverbal"
+  ],
+  "category": "Pediatrics",
+  "items": [
+    {
+      "label": "eye_opening",
+      "description": "Eye Opening response",
+      "points": {
+        "Open spontaneously": 4,
+        "Open to verbal stimuli": 3,
+        "Open to pain only": 2,
+        "No response": 1
+      }
+    },
+    {
+      "label": "verbal_response",
+      "description": "Verbal Response (age-appropriate for preverbal children ≤2 years)",
+      "points": {
+        "Coos, babbles": 5,
+        "Irritable cries": 4,
+        "Cries in response to pain": 3,
+        "Moans in response to pain": 2,
+        "No response": 1
+      }
+    },
+    {
+      "label": "motor_response",
+      "description": "Motor Response (age-appropriate for preverbal children ≤2 years)",
+      "points": {
+        "Moves spontaneously/purposefully": 6,
+        "Withdraws to touch": 5,
+        "Withdraws to pain": 4,
+        "Flexor posturing to pain": 3,
+        "Extensor posturing to pain": 2,
+        "No response": 1
+      }
+    }
+  ],
+  "constraints": [],
+  "formula": "eye_opening + verbal_response + motor_response",
+  "min_score": 3,
+  "max_score": 15,
+  "interpretation": [
+    {
+      "min_score": 13,
+      "max_score": 15,
+      "description": "Minor head injury"
+    },
+    {
+      "min_score": 9,
+      "max_score": 12,
+      "description": "Moderate head injury"
+    },
+    {
+      "min_score": 3,
+      "max_score": 8,
+      "description": "Severe head injury. Consider intubation/definitive airway management."
+    }
+  ],
+  "references": [
+    {
+      "citation": "James HE. Neurologic evaluation and support in the child with an acute brain insult. Pediatr Ann. 1986 Jan;15(1):16-22.",
+      "pmid": "3951884",
+      "url": "10.3928/0090-4481-19860101-05"
+    }
+  ],
+  "notes": "Use for children 2 years and younger only. For older children, use the standard Glasgow Coma Scale (GCS). Should be reported as a sum and include the scores of each of the individual components (e.g., Total pGCS 12=E3+V4+M5). In intubated patients, consider using the Full Outline of UnResponsiveness (FOUR) score. The score alone is not sufficient to guide diagnosis or management. All patients with a GCS <15 need appropriate monitoring."
+}

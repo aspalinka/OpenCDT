@@ -1,0 +1,29 @@
+[project]
+name = "OpenCDT"
+version = "0.1.0"
+description = "MCP server exposing clinical scoring scales to LLMs"
+requires-python = ">=3.12"
+dependencies = [
+    "mcp[cli]>=1.2.0",
+    "numexpr>=2.14.1",
+    "pydantic>=2.12.5",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "hypothesis>=6.151.9",
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.15.0",
+    "ty>=0.0.15",
+]
+
+[project.scripts]
+opencdt = "opencdt.server:main"
+
+[tool.ty.src]
+exclude = [".github"]

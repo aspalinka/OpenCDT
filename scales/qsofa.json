@@ -1,0 +1,70 @@
+{
+  "name": "qSOFA",
+  "full_name": "Quick SOFA Score for Sepsis",
+  "description": "Identifies high-risk patients for in-hospital mortality with suspected infection outside the ICU.",
+  "purpose": "Predict in-hospital mortality in non-ICU patients with confirmed or suspected infection.",
+  "when_to_use": [
+    "Patients ≥18 years old in a non-ICU setting (i.e. pre-hospital, ward, emergency department, or step-down unit) with confirmed or suspected infection."
+  ],
+  "when_not_to_use": null,
+  "tags": [
+    "sepsis",
+    "infection",
+    "mortality",
+    "critical care",
+    "emergency medicine",
+    "qSOFA",
+    "SOFA"
+  ],
+  "category": "Critical Care",
+  "items": [
+    {
+      "label": "altered_mental_status",
+      "description": "Altered mental status (GCS <15)",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "respiratory_rate_gte_22",
+      "description": "Respiratory rate ≥22",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "systolic_bp_lte_100",
+      "description": "Systolic blood pressure ≤100 mmHg",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    }
+  ],
+  "constraints": [],
+  "formula": "altered_mental_status + respiratory_rate_gte_22 + systolic_bp_lte_100",
+  "min_score": 0,
+  "max_score": 3,
+  "interpretation": [
+    {
+      "min_score": 0,
+      "max_score": 1,
+      "description": "Not high risk for in-hospital mortality"
+    },
+    {
+      "min_score": 2,
+      "max_score": 3,
+      "description": "High risk for in-hospital mortality (3- to 14-fold increase)"
+    }
+  ],
+  "references": [
+    {
+      "citation": "Seymour CW, Liu VX, Iwashyna TJ, Brunkhorst FM, Rea TD, Scherag A, Rubenfeld G, Kahn JM, Shankar-Hari M, Singer M, Deutschman CS, Escobar GJ, Angus DC. Assessment of Clinical Criteria for Sepsis: For the Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016 Feb 23;315(8):762-774.",
+      "pmid": "26903335",
+      "doi": "10.1001/jama.2016.0288"
+    }
+  ],
+  "notes": "qSOFA is a mortality predictor, NOT a diagnostic test for sepsis. A positive qSOFA Score (≥2) should prompt further investigation for organ dysfunction or calculation of a full SOFA score, but should not by itself trigger sepsis-directed interventions like initiation of broad-spectrum antibiotics. The 2021 Surviving Sepsis Campaign guidelines do not integrate qSOFA in recommendations for screening or diagnosis of sepsis. Can be repeated serially if there is a change in clinical condition."
+}

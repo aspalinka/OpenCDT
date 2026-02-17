@@ -1,0 +1,157 @@
+                                                                                                              {
+  "name": "NEWS2",
+  "full_name": "National Early Warning Score 2",
+  "description": "Determines the degree of illness of a patient and prompts critical care intervention.",
+  "purpose": "Severity screening of declining conditions; prognosis",
+  "when_to_use": [
+    "Patients ≥16 years old",
+    "Emergency: for initial assessment, serial monitoring, and assessment for triage",
+    "Ward: for initial inpatient assessment and serial monitoring",
+    "Prehospital: for communication of illness severity to receiving hospitals"
+  ],
+  "when_not_to_use": [
+    "Children <16 years old",
+    "Pregnant patients",
+    "May not be reliable in patients with spinal cord injury due to functional disturbance of autonomic responses"
+  ],
+  "tags": [
+    "early warning score",
+    "critical care",
+    "emergency medicine",
+    "vital signs",
+    "deterioration",
+    "NHS",
+    "coronavirus"
+  ],
+  "category": "Critical Care",
+  "items": [
+    {
+      "label": "respiratory_rate",
+      "description": "Respiratory rate (breaths per minute)",
+      "points": {
+        "≤8": 3,
+        "9-11": 1,
+        "12-20": 0,
+        "21-24": 2,
+        "≥25": 3
+      }
+    },
+    {
+      "label": "spo2_scale1",
+      "description": "SpO2 on room air or supplemental oxygen (used if patient does NOT have hypercapnic respiratory failure)",
+      "points": {
+        "≤91%": 3,
+        "92-93%": 2,
+        "94-95%": 1,
+        "≥96%": 0
+      }
+    },
+    {
+      "label": "spo2_scale2",
+      "description": "SpO2 if patient has hypercapnic respiratory failure",
+      "points": {
+        "≤83%": 3,
+        "84-85%": 2,
+        "86-87%": 1,
+        "88-92%, ≥93% on room air": 0,
+        "93-94% on supplemental oxygen": 1,
+        "95-96% on supplemental oxygen": 2,
+        "≥97% on supplemental oxygen": 3
+      }
+    },
+    {
+      "label": "supplemental_oxygen",
+      "description": "Room air or supplemental oxygen",
+      "points": {
+        "Supplemental oxygen": 2,
+        "Room air": 0
+      }
+    },
+    {
+      "label": "temperature",
+      "description": "Temperature",
+      "points": {
+        "≤35.0°C (95°F)": 3,
+        "35.1-36.0°C (95.1-96.8°F)": 1,
+        "36.1-38.0°C (96.9-100.4°F)": 0,
+        "38.1-39.0°C (100.5-102.2°F)": 1,
+        "≥39.1°C (102.3°F)": 2
+      }
+    },
+    {
+      "label": "systolic_bp",
+      "description": "Systolic BP, mmHg",
+      "points": {
+        "≤90": 3,
+        "91-100": 2,
+        "101-110": 1,
+        "111-219": 0,
+        "≥220": 3
+      }
+    },
+    {
+      "label": "pulse",
+      "description": "Pulse, beats per minute",
+      "points": {
+        "≤40": 3,
+        "41-50": 1,
+        "51-90": 0,
+        "91-110": 1,
+        "111-130": 2,
+        "≥131": 3
+      }
+    },
+    {
+      "label": "consciousness",
+      "description": "Consciousness",
+      "points": {
+        "Alert": 0,
+        "New-onset confusion (or disorientation/agitation), responds to voice, responds to pain, or unresponsive": 3
+      }
+    },
+    {
+      "label": "has_hypercapnia",
+      "description": "Hypercapnic respiratory failure",
+      "points": {
+        "Yes": 1,
+        "No": 0
+      }
+    }
+  ],
+  "constraints": [
+    {
+      "item_labels": [
+        "spo2_scale1",
+        "spo2_scale2"
+      ],
+      "description": "Only one SpO2 scale is used: Scale 1 if patient does not have hypercapnic respiratory failure, Scale 2 if patient has hypercapnic respiratory failure"
+    }
+  ],
+  "formula": "respiratory_rate + spo2_scale1*(1-has_hypercapnia) + spo2_scale2*has_hypercapnia + supplemental_oxygen + temperature + systolic_bp + pulse + consciousness",
+  "min_score": 0,
+  "max_score": 20,
+  "interpretation": [
+    {
+      "min_score": 0,
+      "max_score": 4,
+      "description": "Low clinical risk. Minimum every 12 hrs monitoring if score 0, minimum every 4-6 hrs if score 1-4. Assessment by a competent registered nurse or equivalent, to decide change in frequency of clinical monitoring or escalation of care."
+    },
+    {
+      "min_score": 5,
+      "max_score": 6,
+      "description": "Medium clinical risk. Minimum every 1 hr monitoring. Urgent review by a ward-based doctor or acute team nurse, to decide if critical care team assessment is needed."
+    },
+    {
+      "min_score": 7,
+      "max_score": 20,
+      "description": "High clinical risk. Continuous monitoring of vital signs. Emergent assessment by a clinical team or critical care team and usually transfer to higher level of care."
+    }
+  ],
+  "references": [
+    {
+      "citation": "Royal College of Physicians. National Early Warning Score (NEWS) 2: Standardising the assessment of acute-illness severity in the NHS. Updated report of a working party. London: RCP, 2017.",
+      "url": "https://www.rcp.ac.uk/improving-care/resources/national-early-warning-score-news-2/"
+  }
+  ],
+  "notes": "A score of 3 in any individual parameter is considered low-medium clinical risk with minimum every 1 hr monitoring and urgent review by a ward-based doctor, to decide change in frequency of clinical monitoring or escalation of care. The NEWS2 should be used as an adjunct to clinical judgment, not to replace it. Recommended by the NHS (UK) over the original NEWS."
+}

@@ -1,0 +1,206 @@
+name: Generate Scale
+
+on:
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
+
+permissions:
+  issues: write
+  contents: write
+  pull-requests: write
+
+jobs:
+  # Step 1: When an issue is opened, validate the URL and post a bot comment
+  validate:
+    name: Validate Issue URL
+    runs-on: ubuntu-latest
+    if: >-
+      (
+        github.event_name == 'issues' &&
+        github.event.issue.pull_request == null
+      ) || (
+        github.event_name == 'issue_comment' &&
+        github.event.issue.pull_request == null &&
+        github.event.comment.body == '/validate' &&
+        (
+          github.event.comment.author_association == 'OWNER' ||
+          github.event.comment.author_association == 'MEMBER' ||
+          github.event.comment.author_association == 'COLLABORATOR'
+        )
+      )
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate URL and comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = context.payload.issue.body || '';
+            const urlMatch = body.match(/https:\/\/[^\s<>"')\]]+/);
+
+            if (!urlMatch) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: `❌ **No HTTPS URL found in issue body.**\n\nPlease include a link to a medical paper. Allowed domains:\n\n` +
+                  JSON.parse(fs.readFileSync('.github/config/allowed_domains.json', 'utf8'))
+                    .map(d => `- \`${d}\``).join('\n')
+              });
+              return;
+            }
+
+            const url = urlMatch[0];
+            const allowed = JSON.parse(fs.readFileSync('.github/config/allowed_domains.json', 'utf8'));
+            const parsed = new URL(url);
+            const domain = parsed.hostname;
+            const isAllowed = allowed.some(d => domain === d || domain.endsWith(`.${d}`));
+
+            if (parsed.protocol !== 'https:' || !isAllowed) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: `❌ **Domain \`${domain}\` is not in the allowlist.**\n\nAllowed domains:\n\n` +
+                  allowed.map(d => `- \`${d}\``).join('\n')
+              });
+              return;
+            }
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `✅ **URL validated:** ${url}\n\nA maintainer can comment \`/generate\` to create a scale from this paper.`
+            });
+
+  # Step 2: When a maintainer comments /generate, run the generation pipeline
+  generate:
+    name: Generate Scale from Paper
+    runs-on: ubuntu-latest
+    if: >-
+      github.event_name == 'issue_comment' &&
+      github.event.issue.pull_request == null &&
+      github.event.comment.body == '/generate' &&
+      (
+        github.event.comment.author_association == 'OWNER' ||
+        github.event.comment.author_association == 'MEMBER' ||
+        github.event.comment.author_association == 'COLLABORATOR'
+      )
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract URL from bot comment
+        id: extract_url
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Find the bot's validation comment (not the issue body)
+            // to use the URL that was already validated
+            const comments = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            const botComment = comments.data.find(c =>
+              c.user.login === 'github-actions[bot]' &&
+              c.body.includes('✅ **URL validated:**')
+            );
+
+            if (!botComment) {
+              core.setFailed('No validated URL found. The bot must first validate the URL when the issue is created.');
+              return;
+            }
+
+            const urlMatch = botComment.body.match(/\*\*URL validated:\*\* (https:\/\/[^\s]+)/);
+            if (!urlMatch) {
+              core.setFailed('Could not extract URL from bot comment');
+              return;
+            }
+
+            core.setOutput('url', urlMatch[1]);
+
+      - uses: astral-sh/setup-uv@v5
+
+      - name: Install dependencies
+        run: |
+          uv sync
+          uv pip install anthropic requests beautifulsoup4 lxml
+
+      - name: Post progress comment
+        id: bot_comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const url = '${{ steps.extract_url.outputs.url }}';
+            const { data: comment } = await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `🔄 **Starting scale generation...**\n\nURL: ${url}\n\nThis may take a minute.`
+            });
+            core.setOutput('comment_id', comment.id);
+
+      - name: Generate scale
+        id: generate
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          uv run python .github/scripts/generate_scale.py \
+            --mode generate \
+            --url "${{ steps.extract_url.outputs.url }}" \
+            --issue-number ${{ github.event.issue.number }} \
+            --examples scales/cha2ds2_vasc.json scales/wells_dvt.json \
+            --output-dir scales \
+            --allowed-domains .github/config/allowed_domains.json
+
+      - name: Create pull request
+        id: create_pr
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const branch = '${{ steps.generate.outputs.branch }}';
+            const scaleName = '${{ steps.generate.outputs.scale_name }}';
+            const scaleDescription = `${{ steps.generate.outputs.scale_description }}`;
+            const issueNumber = context.issue.number;
+
+            const { data: pr } = await github.rest.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              head: branch,
+              base: 'main',
+              title: `Add ${scaleName} scale`,
+              body: `## Summary\n\nAuto-generated clinical scale: **${scaleName}**\n\n${scaleDescription}\n\nCloses #${issueNumber}\n\n## Review checklist\n\n- [ ] Point values match the original paper\n- [ ] Formula correctly combines items\n- [ ] Interpretation ranges are accurate\n- [ ] Constraints (if any) are correct\n- [ ] \`min_score\` / \`max_score\` are accurate\n`
+            });
+            core.setOutput('pr_url', pr.html_url);
+
+      - name: Update comment on success
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prUrl = '${{ steps.create_pr.outputs.pr_url }}';
+            await github.rest.issues.updateComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: ${{ steps.bot_comment.outputs.comment_id }},
+              body: `✅ **Scale generated successfully!**\n\nPR: ${prUrl}\n\nPlease verify that the extracted values match the original paper.`
+            });
+
+      - name: Update comment on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.updateComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: ${{ steps.bot_comment.outputs.comment_id }},
+              body: `❌ **Scale generation failed.**\n\nCheck the [workflow logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.`
+            });

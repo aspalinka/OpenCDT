@@ -1,0 +1,91 @@
+{
+  "name": "CURB-65",
+  "full_name": "Confusion, Urea, Respiratory rate, Blood pressure, Age ≥65",
+  "description": "A six point score based on confusion, urea, respiratory rate, blood pressure, and age to stratify adults hospitalised with community acquired pneumonia (CAP) according to increasing risk of 30-day mortality.",
+  "purpose": "Stratify patients with community acquired pneumonia into different management groups based on severity at presentation to hospital.",
+  "when_to_use": [
+    "Adults presenting to hospital with community acquired pneumonia",
+    "Assessment of CAP severity on presentation to hospital"
+  ],
+  "when_not_to_use": null,
+  "tags": [
+    "community acquired pneumonia",
+    "CAP",
+    "pneumonia",
+    "severity",
+    "mortality",
+    "respiratory infection"
+  ],
+  "category": "Respiratory Infection",
+  "items": [
+    {
+      "label": "confusion",
+      "description": "Confusion",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "urea",
+      "description": "Urea >7 mmol/l",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "respiratory_rate",
+      "description": "Respiratory rate ≥30/min",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "blood_pressure",
+      "description": "Low systolic (<90 mm Hg) or diastolic (≤60 mm Hg) blood pressure",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "age_65",
+      "description": "Age ≥65 years",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    }
+  ],
+  "constraints": [],
+  "formula": "confusion + urea + respiratory_rate + blood_pressure + age_65",
+  "min_score": 0,
+  "max_score": 5,
+  "interpretation": [
+  {
+    "min_score": 0,
+    "max_score": 1,
+    "description": "Group 1 (low severity): likely suitable for home treatment."
+  },
+  {
+    "min_score": 2,
+    "max_score": 2,
+    "description": "Group 2 (intermediate severity): consider hospital-supervised treatment (e.g., short-stay inpatient or hospital-supervised outpatient)."
+  },
+  {
+    "min_score": 3,
+    "max_score": 5,
+    "description": "Group 3 (high severity): manage in hospital as severe pneumonia; assess for ICU admission especially if CURB-65 score is 4 or 5."
+  }
+],
+  "references": [
+    {
+      "citation": "Lim W, van der Eerden MM, Laing R, Boersma W, Karalus N, Town G, Lewis S, Macfarlane J. Defining community acquired pneumonia severity on presentation to hospital: an international derivation and validation study. Thorax. 2003;58(5):377-382.",
+      "pmid": "12728155",
+      "doi": "10.1136/thorax.58.5.377"
+    }
+  ],
+  "notes": "The score is based on information available at initial hospital assessment. The modified BTS rule (confusion, urea >7 mmol/l, respiratory rate ≥30/min, low blood pressure) was independently associated with mortality (OR 5.2, 95% CI 2.7 to 10). Age ≥65 (OR 3.5, 95% CI 1.6 to 8.0) was independently associated with mortality over and above the mBTS rule."
+}

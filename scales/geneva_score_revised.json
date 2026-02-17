@@ -1,0 +1,122 @@
+{
+  "name": "Geneva Score (Revised)",
+  "full_name": "Revised Geneva Score for Pulmonary Embolism",
+  "description": "Objectifies risk of pulmonary embolism based on history and physical exam alone.",
+  "purpose": "Risk-stratify patients for pulmonary embolism to guide diagnostic workup by predicting pre-test probability of PE.",
+  "when_to_use": [
+    "Patients with clinical suspicion of pulmonary embolism",
+    "Risk-stratifying patients into low, intermediate, or high risk to determine whether to rule out PE with d-dimer or proceed to CT angiography/ultrasound"
+  ],
+  "when_not_to_use": [
+    "Has not been validated in inpatients with suspected PE",
+    "Should not trump clinical gestalt; high clinical suspicion for PE should warrant imaging regardless of Geneva score"
+  ],
+  "tags": [
+    "pulmonary embolism",
+    "PE",
+    "DVT",
+    "venous thromboembolism",
+    "chest pain",
+    "shortness of breath",
+    "d-dimer",
+    "CT angiography",
+    "risk stratification"
+  ],
+  "category": "Emergency Medicine",
+  "items": [
+    {
+      "label": "age_65",
+      "description": "Age >65",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "dvt_pe",
+      "description": "Previous DVT or PE",
+      "points": {
+        "No": 0,
+        "Yes": 3
+      }
+    },
+    {
+      "label": "surgery_limb_fracture",
+      "description": "Surgery (under general anesthesia) or lower limb fracture in past month",
+      "points": {
+        "No": 0,
+        "Yes": 2
+      }
+    },
+    {
+      "label": "malignant_condition",
+      "description": "Active malignant condition (solid or hematologic malignant condition, currently active or considered cured <1 year)",
+      "points": {
+        "No": 0,
+        "Yes": 2
+      }
+    },
+    {
+      "label": "limb_pain",
+      "description": "Unilateral lower limb pain",
+      "points": {
+        "No": 0,
+        "Yes": 3
+      }
+    },
+    {
+      "label": "hemoptysis",
+      "description": "Hemoptysis",
+      "points": {
+        "No": 0,
+        "Yes": 2
+      }
+    },
+    {
+      "label": "heart_rate",
+      "description": "Heart rate",
+      "points": {
+        "< 75": 0,
+        "75-94": 3,
+        "≥ 95": 5
+      }
+    },
+    {
+      "label": "pain_on_limb_palpation",
+      "description": "Pain on lower limb palpation and unilateral edema",
+      "points": {
+        "No": 0,
+        "Yes": 4
+      }
+    }
+  ],
+  "constraints": [],
+  "formula": "age_65 + dvt_pe + surgery_limb_fracture + malignant_condition + limb_pain + hemoptysis + heart_rate + pain_on_limb_palpation",
+  "min_score": 0,
+  "max_score": 22,
+  "interpretation": [
+    {
+      "min_score": 0,
+      "max_score": 3,
+      "description": "Low risk (<10% incidence of PE)"
+    },
+    {
+      "min_score": 4,
+      "max_score": 10,
+      "description": "Intermediate risk. If d-dimer testing is negative, consider stopping workup. If d-dimer testing is positive, consider CT and US. If CT is inconclusive, consider V/Q scan or angiography."
+    },
+    {
+      "min_score": 11,
+      "max_score": 22,
+      "description": "High risk (>60% incidence of PE). Consider CT and US. If imaging is negative, consider angiography."
+    }
+  ],
+  "references": [
+    {
+      "citation": "Le Gal G, Righini M, Roy PM, Sanchez O, Aujesky D, Bounameaux H, Perrier A. Prediction of pulmonary embolism in the emergency department: the revised Geneva score. Ann Intern Med. 2006 Feb 7;144(3):165-171.",
+      "pmid": "16461960",
+      "doi": "10.7326/0003-4819-144-3-200602070-00004"
+    }
+  ],
+  "notes": "The rGeneva score does not require imaging, serum studies, or clinical gestalt for risk stratification. To give points related to signs of DVT, both pain at palpation AND edema should be present. All patients with a low or intermediate pretest probability can undergo a D-dimer test, which will rule out PE if negative."
+}
