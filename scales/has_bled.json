@@ -1,0 +1,150 @@
+{
+  "name": "HAS-BLED",
+  "full_name": "Hypertension, Abnormal liver/renal function, Stroke history, Bleeding predisposition, Labile INR, Elderly, Drug/alcohol usage",
+  "description": "Estimates risk of major bleeding for patients on anticoagulation to assess risk-benefit in atrial fibrillation care.",
+  "purpose": "Estimate the 1-year risk of major bleeding in patients with atrial fibrillation to assist in shared decision-making regarding anticoagulation.",
+  "when_to_use": [
+    "As a reference tool to assist in the shared decision-making discussion regarding anticoagulation in patients with atrial fibrillation",
+    "Instead of, or in conjunction with, other bleeding risk scores such as HEMORR₂HAGES and ATRIA to determine risk of major bleeding in a patient with atrial fibrillation",
+    "Comparing the risk for major bleeding to the risk for thromboembolic events by the CHA₂DS₂-VASc to determine if the benefit of anticoagulation outweighs the risk"
+  ],
+  "when_not_to_use": [
+    "Use with caution in patients with chronic kidney disease – score has been shown to perform poorly",
+    "Use with caution in patients with cancer – score has been shown to perform poorly"
+  ],
+  "tags": [
+    "atrial fibrillation",
+    "bleeding",
+    "anticoagulation",
+    "major bleeding",
+    "hemorrhage",
+    "gastrointestinal bleeding",
+    "stroke",
+    "cardiology",
+    "hematology"
+  ],
+  "category": "Cardiology",
+  "items": [
+    {
+      "label": "hypertension",
+      "description": "Uncontrolled hypertension, >160 mmHg systolic",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "renal_disease",
+      "description": "Renal disease (dialysis, transplant, Cr >2.26 mg/dL or >200 µmol/L)",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "liver_disease",
+      "description": "Liver disease (cirrhosis or bilirubin >2x normal with AST/ALT/AP >3x normal)",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "stroke",
+      "description": "Stroke history",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "bleeding_predisposition",
+      "description": "Prior major bleeding or predisposition to bleeding",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "labile_inr",
+      "description": "Labile INR (unstable/high INRs, time in therapeutic range <60%)",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "age_65",
+      "description": "Elderly (age >65)",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "medication_usage",
+      "description": "Medication usage predisposing to bleeding (aspirin, clopidogrel, NSAIDs)",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "alcohol_drug_use",
+      "description": "Alcohol use (≥8 drinks/week)",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    }
+  ],
+  "formula": "hypertension + renal_disease + liver_disease + stroke + bleeding_predisposition + labile_inr + age_65 + medication_usage + alcohol_drug_use",
+  "min_score": 0,
+  "max_score": 9,
+  "interpretation": [
+    {
+      "min_score": 0,
+      "max_score": 0,
+      "description": "Low risk. Risk of major bleeding 0.9%. 1.13 bleeds per 100 patient-years. Anticoagulation should be considered."
+    },
+    {
+      "min_score": 1,
+      "max_score": 1,
+      "description": "Low risk. Risk of major bleeding 3.4%. 1.02 bleeds per 100 patient-years. Anticoagulation should be considered."
+    },
+    {
+      "min_score": 2,
+      "max_score": 2,
+      "description": "Moderate risk. Risk of major bleeding 4.1%. 1.88 bleeds per 100 patient-years. Anticoagulation can be considered."
+    },
+    {
+      "min_score": 3,
+      "max_score": 3,
+      "description": "High risk. Risk of major bleeding 5.8%. 3.72 bleeds per 100 patient-years. Alternatives to anticoagulation should be considered."
+    },
+    {
+      "min_score": 4,
+      "max_score": 4,
+      "description": "High risk. Risk of major bleeding 8.9%. 8.70 bleeds per 100 patient-years. Alternatives to anticoagulation should be considered."
+    },
+    {
+      "min_score": 5,
+      "max_score": 5,
+      "description": "High risk. Risk of major bleeding 9.1%. 12.50 bleeds per 100 patient-years. Alternatives to anticoagulation should be considered."
+    },
+    {
+      "min_score": 6,
+      "max_score": 9,
+      "description": "Very high risk. Scores greater than 5 were too rare to determine risk, but are likely over 10%."
+    }
+  ],
+  "references": [
+    {
+      "citation": "Pisters R, Lane DA, Nieuwlaat R, de Vos CB, Crijns HJ, Lip GY. A novel user-friendly score (HAS-BLED) to assess 1-year risk of major bleeding in patients with atrial fibrillation: the Euro Heart Survey. Chest. 2010 Nov;138(5):1093-100.",
+      "pmid": "20299623",
+      "doi": "10.1378/chest.10-0134"
+    }
+  ],
+  "constraints": [],
+  "notes": "The most important pitfall is using HAS-BLED as an absolute cut-off to withhold or withdraw anticoagulation. In the vast majority of AF patients, risk of stroke outweighs risk of bleeding. HAS-BLED should be used as an alarm bell to signal risk factors that can be avoided or reversed. The derivation study was based on a cohort in which only around 2/3 were on any antithrombotic therapy. Major bleeding was defined as intracranial hemorrhage, bleeding requiring hospitalization, bleeding with hemoglobin decrease >2 g/L, or bleeding requiring transfusion."
+}

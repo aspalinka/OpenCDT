@@ -1,0 +1,86 @@
+{
+  "name": "Glasgow Coma Scale",
+  "full_name": "Glasgow Coma Scale (GCS)",
+  "description": "Coma severity based on Eye (4), Verbal (5), and Motor (6) criteria.",
+  "purpose": "Assessment of impaired consciousness and coma in acutely ill trauma and non-trauma patients; assists with predictions of neurological outcomes and mortality.",
+  "when_to_use": [
+    "Designed for use in serial assessments of patients with coma from either medical or surgical causes to be widely applicable",
+    "Commonly used in the pre-hospital and acute care setting as well as over a patient's hospital course to evaluate for mental status assessment in both traumatic and non-traumatic presentations"
+  ],
+  "when_not_to_use": null,
+  "tags": [
+    "coma",
+    "consciousness",
+    "trauma",
+    "brain injury",
+    "neurological assessment",
+    "mental status",
+    "AMS",
+    "head injury"
+  ],
+  "category": "Neurology",
+  "items": [
+    {
+      "label": "eye",
+      "description": "Best eye response",
+      "points": {
+        "Eyes open spontaneously": 4,
+        "Eye opening to verbal command": 3,
+        "Eye opening to pain": 2,
+        "No eye opening": 1
+      }
+    },
+    {
+      "label": "verbal",
+      "description": "Best verbal response",
+      "points": {
+        "Oriented": 5,
+        "Confused": 4,
+        "Inappropriate words": 3,
+        "Incomprehensible sounds": 2,
+        "No verbal response": 1
+      }
+    },
+    {
+      "label": "motor",
+      "description": "Best motor response",
+      "points": {
+        "Obeys commands": 6,
+        "Localizes pain": 5,
+        "Withdrawal from pain": 4,
+        "Flexion to pain": 3,
+        "Extension to pain": 2,
+        "No motor response": 1
+      }
+    }
+  ],
+  "constraints": [],
+  "formula": "eye + verbal + motor",
+  "min_score": 3,
+  "max_score": 15,
+  "interpretation": [
+    {
+      "min_score": 3,
+      "max_score": 8,
+      "description": "Severe impairment of consciousness. In trauma patients, GCS ≤8 raises concern for inability to protect the airway. Assess airway immediately; intubation should be considered, especially if there is clinical concern for airway compromise or anticipated neurological deterioration based on examination or imaging. Rapidly declining or fluctuating GCS in this range is particularly concerning and warrants urgent reassessment."
+    },
+    {
+      "min_score": 9,
+      "max_score": 14,
+      "description": "Moderate impairment of consciousness. Trauma patients with GCS <15 require close monitoring and serial reassessment. A declining or waxing and waning GCS is concerning in any setting and should prompt immediate evaluation of airway protection and possible intervention. Management decisions should be guided by the overall clinical picture rather than GCS alone."
+    },
+    {
+      "min_score": 15,
+      "max_score": 15,
+      "description": "Normal level of consciousness. However, GCS 15 does NOT exclude serious or life-threatening illness. Clinical severity and management decisions must be based on the full clinical context, mechanism of injury, examination findings, and investigations, not solely on the GCS score."
+    }
+  ],
+  "references": [
+    {
+      "citation": "Teasdale G, Jennett B. Assessment of coma and impaired consciousness. A practical scale. Lancet. 1974;2(7872):81-84.",
+      "pmid": "4136544",
+      "doi": "10.1016/s0140-6736(74)91639-0"
+    }
+  ],
+  "notes": "The Glasgow Coma Score (total score) is only applicable when all three components are testable. If any component is not testable (e.g., eye due to local injury/edema, verbal due to intubation, or any component due to sedation/paralysis), a score of 1 should not be assigned for that component; instead it should be recorded as NT (not testable), and the total Score cannot be calculated. In such cases, the individual component scores of the Glasgow Coma Scale should be reported separately, e.g. E(4) V(5) M(6). Clinical management decisions should not be based solely on the GCS score in the acute setting. For preverbal children (≤2 years of age), consider using the Pediatric Glasgow Coma Scale."
+}

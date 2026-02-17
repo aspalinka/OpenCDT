@@ -1,0 +1,97 @@
+{
+  "name": "Child-Pugh Score",
+  "full_name": "Child-Pugh Score for Cirrhosis Mortality",
+  "description": "Estimates cirrhosis severity.",
+  "purpose": "Prognosis in cirrhosis; guides treatment.",
+  "when_to_use": [
+    "Patients with cirrhosis",
+    "Patients with chronic liver disease"
+  ],
+  "when_not_to_use": null,
+  "tags": [
+    "cirrhosis",
+    "chronic liver disease",
+    "hepatitis",
+    "jaundice",
+    "abdominal pain",
+    "prognosis",
+    "liver"
+  ],
+  "category": "Gastroenterology/Hepatology",
+  "items": [
+    {
+      "label": "bilirubin",
+      "description": "Bilirubin (Total)",
+      "points": {
+        "<2 mg/dL (<34.2 µmol/L)": 1,
+        "2-3 mg/dL (34.2-51.3 µmol/L)": 2,
+        ">3 mg/dL (>51.3 µmol/L)": 3
+      }
+    },
+    {
+      "label": "albumin",
+      "description": "Albumin",
+      "points": {
+        ">3.5 g/dL (>35 g/L)": 1,
+        "2.8-3.5 g/dL (28-35 g/L)": 2,
+        "<2.8 g/dL (<28 g/L)": 3
+      }
+    },
+    {
+      "label": "inr",
+      "description": "INR",
+      "points": {
+        "<1.7": 1,
+        "1.7-2.3": 2,
+        ">2.3": 3
+      }
+    },
+    {
+      "label": "ascites",
+      "description": "Ascites",
+      "points": {
+        "Absent": 1,
+        "Slight": 2,
+        "Moderate": 3
+      }
+    },
+    {
+      "label": "encephalopathy",
+      "description": "Encephalopathy",
+      "points": {
+        "No Encephalopathy": 1,
+        "Grade 1-2": 2,
+        "Grade 3-4": 3
+      }
+    }
+  ],
+  "constraints": [],
+  "formula": "bilirubin + albumin + inr + ascites + encephalopathy",
+  "min_score": 5,
+  "max_score": 15,
+  "interpretation": [
+    {
+      "min_score": 5,
+      "max_score": 6,
+      "description": "Class A - Well-compensated disease"
+    },
+    {
+      "min_score": 7,
+      "max_score": 9,
+      "description": "Class B - Significant functional compromise"
+    },
+    {
+      "min_score": 10,
+      "max_score": 15,
+      "description": "Class C - Decompensated disease"
+    }
+  ],
+  "references": [
+    {
+      "citation": "Child CG, Turcotte JG. Surgery and portal hypertension. Major Probl Clin Surg. 1964;1:1-85.",
+      "pmid": "4950264",
+      "doi": null
+    }
+  ],
+  "notes": "The Child-Pugh Score can be useful in the prognosis of patients with cirrhosis, but more recent scores like the MELD score and MELD-Na have become more used given their better prognostic value. Encephalopathy Grades (from the FDA): Grade 0: normal consciousness, personality, neurological examination, electroencephalogram; Grade 1: restless, sleep disturbed, irritable/agitated, tremor, impaired handwriting, 5 cps waves; Grade 2: lethargic, time-disoriented, inappropriate, asterixis, ataxia, slow triphasic waves; Grade 3: somnolent, stuporous, place-disoriented, hyperactive reflexes, rigidity, slower waves; Grade 4: unrousable coma, no personality/behavior, decerebrate, slow 2-3 cps delta activity."
+}

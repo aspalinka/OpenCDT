@@ -1,0 +1,118 @@
+{
+  "name": "Pediatric Appendicitis Score",
+  "full_name": "Pediatric Appendicitis Score (PAS)",
+  "description": "Predicts appendicitis in children.",
+  "purpose": "Diagnosis and rule out of appendicitis in pediatric patients.",
+  "when_to_use": [
+    "Children or adolescents with acute abdominal pain, especially localized to the right lower quadrant (RLQ), where appendicitis is suspected",
+    "Patients 3-18 years of age"
+  ],
+  "when_not_to_use": [
+    "Patients with known GI disease",
+    "Pregnancy",
+    "Previous abdominal surgeries"
+  ],
+  "tags": [
+    "appendicitis",
+    "pediatrics",
+    "abdominal pain",
+    "emergency medicine",
+    "surgery"
+  ],
+  "category": "Pediatrics",
+  "items": [
+    {
+      "label": "rlq_tenderness_cough_percussion_hopping",
+      "description": "Right lower quadrant (RLQ) tenderness to cough, percussion, or hopping",
+      "points": {
+        "No": 0,
+        "Yes": 2
+      }
+    },
+    {
+      "label": "anorexia",
+      "description": "Anorexia",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "fever",
+      "description": "Fever (temp ≥38.0ºC/100.4ºF)",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "nausea_or_vomiting",
+      "description": "Nausea or vomiting",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "tenderness_right_iliac_fossa",
+      "description": "Tenderness over right iliac fossa",
+      "points": {
+        "No": 0,
+        "Yes": 2
+      }
+    },
+    {
+      "label": "leukocytosis",
+      "description": "Leukocytosis (WBC ≥10,000)",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "neutrophilia",
+      "description": "Neutrophilia (ANC >7,500)",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "migration_of_pain_to_rlq",
+      "description": "Migration of pain to right lower quadrant",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    }
+  ],
+  "constraints": [],
+  "formula": "rlq_tenderness_cough_percussion_hopping + anorexia + fever + nausea_or_vomiting + tenderness_right_iliac_fossa + leukocytosis + neutrophilia + migration_of_pain_to_rlq",
+  "min_score": 0,
+  "max_score": 10,
+  "interpretation": [
+    {
+      "min_score": 0,
+      "max_score": 3,
+      "description": "Low Risk: Low likelihood of acute appendicitis, and likely do not warrant imaging. Consider other causes of acute abdominal pain."
+    },
+    {
+      "min_score": 4,
+      "max_score": 6,
+      "description": "Equivocal: Imaging can be helpful, preferably ultrasound or MRI. Surgical consults are warranted for patients with equivocal scores and imaging where the appendix cannot be visualized."
+    },
+    {
+      "min_score": 7,
+      "max_score": 10,
+      "description": "High Risk: Surgical consult warranted. Imaging may still be pursued, but patients should only undergo ultrasound prior to a surgical consult."
+    }
+  ],
+  "references": [
+    {
+      "citation": "Shah SR, Sinclair KA, Theut SB, Johnson KM, Holcomb GW 3rd, St Peter SD. Computed Tomography Utilization for the Diagnosis of Acute Appendicitis in Children Decreases With a Diagnostic Algorithm. Ann Surg. 2016 Sep;264(3):474-81.",
+      "pmid": "27433918",
+      "doi": "10.1097/SLA.0000000000001867"
+    }
+  ],
+  "notes": "Patients in the low risk group according to the PAS do not have a zero risk. Use clinical discretion if imaging or surgical consult may aid in diagnosis. The score has a higher negative predictive value (95%) in the absence of RLQ pain, pain with walking/jumping or coughing, and an ANC <6,750. For patients who are not low risk, next steps include NPO status, IV fluids, analgesia, and imaging or surgical consultation."
+}

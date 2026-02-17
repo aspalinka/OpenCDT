@@ -1,0 +1,122 @@
+{
+  "name": "Wells' Criteria for Pulmonary Embolism",
+  "full_name": "Wells' Criteria for Pulmonary Embolism",
+  "description": "Objectifies risk of pulmonary embolism and provides an estimated pre-test probability.",
+  "purpose": "Risk stratify patients for pulmonary embolism (PE) and guide further diagnostic workup (d-dimer or CT angiogram).",
+  "when_to_use": [
+    "Patients with clinical suspicion for pulmonary embolism",
+    "Determining pre-test probability of PE to guide further testing"
+  ],
+  "when_not_to_use": [
+    "Should not be applied to all patients with chest pain or shortness of breath without clinical suspicion for PE",
+    "Should not be used before history and physical exam"
+  ],
+  "tags": [
+    "pulmonary embolism",
+    "PE",
+    "venous thromboembolism",
+    "VTE",
+    "chest pain",
+    "shortness of breath",
+    "d-dimer",
+    "CTA"
+  ],
+  "category": "Emergency Medicine",
+  "items": [
+    {
+      "label": "dvt",
+      "description": "Clinical signs and symptoms of DVT",
+      "points": {
+        "No": 0,
+        "Yes": 3
+      }
+    },
+    {
+      "label": "pe_number_one_diagnosis",
+      "description": "PE is the most or equally likely diagnosis",
+      "points": {
+        "No": 0,
+        "Yes": 3
+      }
+    },
+    {
+      "label": "heart_rate_100",
+      "description": "Heart rate >100",
+      "points": {
+        "No": 0,
+        "Yes": 1.5
+      }
+    },
+    {
+      "label": "immobilization_or_surgery",
+      "description": "Immobilization at least 3 days or surgery in the previous 4 weeks",
+      "points": {
+        "No": 0,
+        "Yes": 1.5
+      }
+    },
+    {
+      "label": "previous_pe_dvt",
+      "description": "Previous, objectively diagnosed PE or DVT",
+      "points": {
+        "No": 0,
+        "Yes": 1.5
+      }
+    },
+    {
+      "label": "hemoptysis",
+      "description": "Hemoptysis",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "malignancy",
+      "description": "Malignancy with treatment within 6 months or palliative",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    }
+  ],
+  "constraints": [],
+  "formula": "dvt + pe_number_one_diagnosis + heart_rate_100 + immobilization_or_surgery + previous_pe_dvt + hemoptysis + malignancy",
+  "min_score": 0,
+  "max_score": 12.5,
+  "interpretation": [
+    {
+      "min_score": 0,
+      "max_score": 1,
+      "description": "Three-Tier Model: Low Risk (1.3% incidence of PE). Consider d-dimer testing to rule out PE. If negative, consider stopping workup. If positive, consider CTA."
+    },
+    {
+      "min_score": 2,
+      "max_score": 6,
+      "description": "Three-Tier Model: Moderate Risk (16.2% incidence of PE). Consider high sensitivity d-dimer testing or CTA. If dimer negative, consider stopping workup. If positive, consider CTA."
+    },
+    {
+      "min_score": 7,
+      "max_score": 12.5,
+      "description": "Three-Tier Model: High Risk (37.5% incidence of PE). Consider CTA. D-dimer testing is not recommended."
+    },
+    {
+      "min_score": 0,
+      "max_score": 4,
+      "description": "Two-Tier Model: PE Unlikely (12.1% incidence of PE). Consider high sensitivity d-dimer testing. If negative, consider stopping workup. If positive, consider CTA."
+    },
+    {
+      "min_score": 5,
+      "max_score": 12.5,
+      "description": "Two-Tier Model: PE Likely (37.1% incidence of PE). Consider CTA testing."
+    }
+  ],
+  "references": [
+    {
+      "citation": "Wells PS, Anderson DR, Rodger M, Stiell I, Dreyer JF, Barnes D, Forgie M, Kovacs G, Ward J, Kovacs MJ. Excluding pulmonary embolism at the bedside without diagnostic imaging: management of patients with suspected pulmonary embolism presenting to the emergency department by using a simple clinical model and d-dimer. Ann Intern Med. 2001 Jul 17;135(2):98-107",
+      "pmid": "11453709",
+      "doi": "10.7326/0003-4819-135-2-200107170-00010"
+    }
+  ],
+  "notes": "Wells' can be used with either 3 tiers (low, moderate, high) or 2 tiers (unlikely, likely). ACEP's 2011 clinical policy on PE supports the two-tier model. The model should be applied only after history and physical exam suggests that venous thromboembolism is a diagnostic possibility."
+}

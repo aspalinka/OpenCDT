@@ -1,0 +1,114 @@
+{
+  "name": "STOP-BANG",
+  "full_name": "STOP-BANG Score for Obstructive Sleep Apnea",
+  "description": "Screens for obstructive sleep apnea (OSA).",
+  "purpose": "Diagnosis of obstructive sleep apnea",
+  "when_to_use": [
+    "Patients undergoing preoperative evaluation",
+    "Patients presenting to a clinic setting with symptoms associated with OSA like: daytime drowsiness, snoring, observed periods of nighttime apnea, noisy breathing, etc."
+  ],
+  "when_not_to_use": [
+    "Patient has already been diagnosed with OSA or uses CPAP at night",
+    "Not well-validated in the obstetrical population"
+  ],
+  "tags": [
+    "obstructive sleep apnea",
+    "OSA",
+    "screening",
+    "preoperative",
+    "snoring",
+    "fatigue",
+    "CPAP"
+  ],
+  "category": "Pulmonology",
+  "items": [
+    {
+      "label": "snore",
+      "description": "Do you snore loudly? (Louder than talking or loud enough to be heard through closed doors)",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "tired",
+      "description": "Do you often feel tired, fatigued, or sleepy during the daytime?",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "observed",
+      "description": "Has anyone observed you stop breathing during sleep?",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "pressure",
+      "description": "Do you have (or are you being treated for) high blood pressure?",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "bmi",
+      "description": "BMI",
+      "points": {
+        "≤35 kg/m²": 0,
+        ">35 kg/m²": 1
+      }
+    },
+    {
+      "label": "age",
+      "description": "Age",
+      "points": {
+        "≤50 years": 0,
+        ">50 years": 1
+      }
+    },
+    {
+      "label": "neck",
+      "description": "Neck circumference",
+      "points": {
+        "≤40 cm": 0,
+        ">40 cm": 1
+      }
+    },
+    {
+      "label": "gender",
+      "description": "Gender",
+      "points": {
+        "Female": 0,
+        "Male": 1
+      }
+    }
+  ],
+  "constraints": [],
+  "formula": "snore + tired + observed + pressure + bmi + age + neck + gender",
+  "min_score": 0,
+  "max_score": 8,
+  "interpretation": [
+    {
+      "min_score": 0,
+      "max_score": 2,
+      "description": "Low risk of OSA"
+    },
+    {
+      "min_score": 3,
+      "max_score": 8,
+      "description": "High risk of OSA"
+    }
+  ],
+  "references": [
+    {
+      "citation": "Chung F, Yegneswaran B, Liao P, Chung SA, Vairavanathan S, Islam S, Khajehdehi A, Shapiro CM. STOP questionnaire: a tool to screen patients for obstructive sleep apnea. Anesthesiology. 2008 May;108(5):812-21.",
+      "pmid": "18431116",
+      "doi": "10.1097/ALN.0b013e31816d83e4"
+    }
+  ],
+  "notes": "The STOP-BANG questionnaire screens for obstructive sleep apnea (OSA) only, not central sleep apnea. The first four items (STOP) are subjective questions asked to the patient; the last four (BANG) are objective measures. Patients screening as high-risk for OSA should have formal polysomnography for definitive diagnosis."
+}

@@ -1,0 +1,141 @@
+{
+  "name": "STONE Score",
+  "full_name": "STONE Score for Uncomplicated Ureteral Stone",
+  "description": "Predicts likelihood of ureteral stone in nontoxic-appearing patients with flank pain.",
+  "purpose": "Diagnosis of ureteral stones before ultrasound to guide diagnostic decision-making and shared decision-making conversations.",
+  "when_to_use": [
+    "Patients with suspected kidney stones and normal renal function"
+  ],
+  "when_not_to_use": [
+    "Patients with fever or other signs of infection",
+    "Recent trauma or urologic surgery",
+    "Active malignancy"
+  ],
+  "tags": [
+    "kidney stone",
+    "ureteral stone",
+    "flank pain",
+    "hematuria",
+    "emergency medicine",
+    "urology",
+    "nephrology",
+    "abdominal pain",
+    "dysuria",
+    "nausea",
+    "vomiting"
+  ],
+  "category": "Emergency Medicine",
+  "items": [
+    {
+      "label": "sex",
+      "description": "Sex",
+      "points": {
+        "Female": 0,
+        "Male": 2
+      }
+    },
+    {
+      "label": "pain_duration",
+      "description": "Duration of pain prior to presentation",
+      "points": {
+        ">24 hours": 0,
+        "6-24 hours": 1,
+        "<6 hours": 3
+      }
+    },
+    {
+      "label": "obvious_hematuria",
+      "description": "Obvious hematuria",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "nausea_vomiting",
+      "description": "Nausea and vomiting",
+      "points": {
+        "None": 0,
+        "Nausea alone": 1,
+        "Nausea and vomiting": 2
+      }
+    },
+    {
+      "label": "erythrocytes",
+      "description": "Erythrocytes in urine",
+      "points": {
+        "No": 0,
+        "Yes": 2
+      }
+    }
+  ],
+  "constraints": [],
+  "formula": "sex + pain_duration + obvious_hematuria + nausea_vomiting + erythrocytes",
+  "min_score": 0,
+  "max_score": 10,
+  "interpretation": [
+    {
+      "min_score": 0,
+      "max_score": 0,
+      "description": "Low risk group. Likelihood of ureteral stone: 4%."
+    },
+    {
+      "min_score": 1,
+      "max_score": 1,
+      "description": "Low risk group. Likelihood of ureteral stone: 7%."
+    },
+    {
+      "min_score": 2,
+      "max_score": 2,
+      "description": "Low risk group. Likelihood of ureteral stone: 14%."
+    },
+    {
+      "min_score": 3,
+      "max_score": 3,
+      "description": "Low risk group. Likelihood of ureteral stone: 26%."
+    },
+    {
+      "min_score": 4,
+      "max_score": 4,
+      "description": "Moderate risk group. Likelihood of ureteral stone: 42%."
+    },
+    {
+      "min_score": 5,
+      "max_score": 5,
+      "description": "Moderate risk group. Likelihood of ureteral stone: 60%."
+    },
+    {
+      "min_score": 6,
+      "max_score": 6,
+      "description": "Moderate risk group. Likelihood of ureteral stone: 76%."
+    },
+    {
+      "min_score": 7,
+      "max_score": 7,
+      "description": "High risk group. Likelihood of ureteral stone: 87%."
+    },
+    {
+      "min_score": 8,
+      "max_score": 8,
+      "description": "High risk group. Likelihood of ureteral stone: 93%."
+    },
+    {
+      "min_score": 9,
+      "max_score": 9,
+      "description": "High risk group. Likelihood of ureteral stone: 96%."
+    },
+    {
+      "min_score": 10,
+      "max_score": 10,
+      "description": "High risk group. Likelihood of ureteral stone: 98%."
+    }
+  ],
+  "references": [
+    {
+      "citation": "Moore CL, Gross CP, Hart L, Molinaro AM, Rhodes D, Singh D, Baloescu C. Construction and performance of a clinical prediction rule for ureteral stone without the use of race or ethnicity: A new STONE score. J Am Coll Emerg Physicians Open. 2024 Nov 7;5(6):e13324.",
+      "pmid": "PMC11543628",
+      "doi": "10.1002/emp2.13324"
+    }
+  ],
+  "notes": "High STONE scores decrease likelihood of an alternative diagnosis to <2% and therefore those with high STONE scores could, in the correct clinical context, be managed without an immediate CT. Hydronephrosis on ultrasound, in addition to the score, increases likelihood of kidney stone. External validation studies suggest that the omission of the 'race' criterion may be more accurate in locations with a higher proportion of African-American patients. The original STONE score included 'Origin or race' as the 'O' variable, which was later replaced with 'Obvious or gross hematuria' in an updated version."
+}

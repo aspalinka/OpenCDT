@@ -1,0 +1,86 @@
+{
+  "name": "Wells DVT",
+  "full_name": "Wells Criteria for Deep Vein Thrombosis",
+  "description": "Estimates the pretest probability of deep vein thrombosis (DVT).",
+  "purpose": "Risk-stratify patients with suspected DVT to guide diagnostic workup.",
+  "when_to_use": [
+    "Patients presenting with unilateral leg swelling or pain",
+    "Suspected lower extremity DVT",
+    "Deciding between D-dimer testing and ultrasound"
+  ],
+  "when_not_to_use": [
+    "Patients already on anticoagulation",
+    "Suspected upper extremity DVT",
+    "Post-operative patients within 30 days of major surgery (limited validation)"
+  ],
+  "tags": ["DVT", "deep vein thrombosis", "venous thromboembolism", "VTE", "leg swelling", "D-dimer"],
+  "category": "Hematology",
+  "items": [
+    {
+      "label": "active_cancer",
+      "description": "Active cancer (treatment ongoing, within 6 months, or palliative)",
+      "points": {"No": 0, "Yes": 1}
+    },
+    {
+      "label": "paralysis",
+      "description": "Paralysis, paresis, or recent plaster immobilization of the lower extremities",
+      "points": {"No": 0, "Yes": 1}
+    },
+    {
+      "label": "bedridden",
+      "description": "Recently bedridden for >3 days, or major surgery requiring general/regional anesthesia in the past 12 weeks",
+      "points": {"No": 0, "Yes": 1}
+    },
+    {
+      "label": "localized_tenderness",
+      "description": "Localized tenderness along the distribution of the deep venous system",
+      "points": {"No": 0, "Yes": 1}
+    },
+    {
+      "label": "leg_swelling",
+      "description": "Entire leg swollen",
+      "points": {"No": 0, "Yes": 1}
+    },
+    {
+      "label": "calf_swelling",
+      "description": "Calf swelling at least 3 cm larger than asymptomatic side (measured 10 cm below tibial tuberosity)",
+      "points": {"No": 0, "Yes": 1}
+    },
+    {
+      "label": "pitting_edema",
+      "description": "Pitting edema confined to the symptomatic leg",
+      "points": {"No": 0, "Yes": 1}
+    },
+    {
+      "label": "collateral_veins",
+      "description": "Collateral superficial veins (non-varicose)",
+      "points": {"No": 0, "Yes": 1}
+    },
+    {
+      "label": "previous_dvt",
+      "description": "Previously documented DVT",
+      "points": {"No": 0, "Yes": 1}
+    },
+    {
+      "label": "alternative_dx",
+      "description": "Alternative diagnosis at least as likely as DVT",
+      "points": {"No": 0, "Yes": -2}
+    }
+  ],
+  "formula": "active_cancer + paralysis + bedridden + localized_tenderness + leg_swelling + calf_swelling + pitting_edema + collateral_veins + previous_dvt + alternative_dx",
+  "min_score": -2,
+  "max_score": 9,
+  "interpretation": [
+    {"min_score": -2, "max_score": 0, "description": "Low probability (~5% prevalence of DVT). D-dimer testing recommended; if negative, DVT effectively excluded; if positive, proceed to ultrasound."},
+    {"min_score": 1, "max_score": 2, "description": "Moderate probability (~17% prevalence of DVT). High-sensitivity d-dimer testing recommended; if negative, DVT effectively excluded; if positive, proceed to ultrasound. If high-sensitivity d-dimer testing not available, ultrasound recommended."},
+    {"min_score": 3, "max_score": 9, "description": "High probability (17-53% prevalence of DVT). Ultrasound recommended as initial test; consider empiric anticoagulation while awaiting results. Only both negative ultrasound and d-dimer are sufficient to rule out DVT"}
+  ],
+  "references": [
+    {
+      "citation": "Wells PS, Anderson DR, Rodger M, et al. Evaluation of D-dimer in the diagnosis of suspected deep-vein thrombosis. N Engl J Med. 2003;349(13):1227-1235.",
+      "pmid": "14507948",
+      "doi": "10.1056/NEJMoa023153"
+    }
+  ],
+  "notes": "The alternative_dx item subtracts 2 points. Original study used a cutoff of ≥3 for 'high probability'. Some versions use a two-level system (unlikely ≤1, likely ≥2)."
+}

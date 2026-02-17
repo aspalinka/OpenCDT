@@ -1,0 +1,115 @@
+{
+  "name": "Alvarado Score",
+  "full_name": "Alvarado Score for Acute Appendicitis",
+  "description": "Predicts likelihood of appendicitis diagnosis.",
+  "purpose": "Diagnosis of acute appendicitis",
+  "when_to_use": [
+    "Patients with suspected acute appendicitis (typically with right lower quadrant pain)"
+  ],
+  "when_not_to_use": null,
+  "tags": [
+    "appendicitis",
+    "abdominal pain",
+    "fever",
+    "vomiting",
+    "emergency medicine",
+    "pediatrics",
+    "surgery"
+  ],
+  "category": "Emergency Medicine",
+  "items": [
+    {
+      "label": "right_lower_quadrant_tenderness",
+      "description": "Right lower quadrant tenderness",
+      "points": {
+        "No": 0,
+        "Yes": 2
+      }
+    },
+    {
+      "label": "elevated_temperature",
+      "description": "Elevated temperature (37.3°C or 99.1°F)",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "rebound_tenderness",
+      "description": "Rebound tenderness",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "pain_right_lower_quadrant",
+      "description": "Migration of pain to the right lower quadrant",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "anorexia",
+      "description": "Anorexia",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "nausea",
+      "description": "Nausea or vomiting",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "leukocytosis",
+      "description": "Leukocytosis >10,000",
+      "points": {
+        "No": 0,
+        "Yes": 2
+      }
+    },
+    {
+      "label": "leukocyte_left_shift",
+      "description": "Leukocyte left shift (>75% neutrophils)",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    }
+  ],
+  "constraints": [],
+  "formula": "right_lower_quadrant_tenderness + elevated_temperature + rebound_tenderness + pain_right_lower_quadrant + anorexia + nausea + leukocytosis + leukocyte_left_shift",
+  "min_score": 0,
+  "max_score": 10,
+  "interpretation": [
+    {
+      "min_score": 0,
+      "max_score": 3,
+      "description": "Appendicitis unlikely. No CT recommended for diagnosing appendicitis."
+    },
+    {
+      "min_score": 4,
+      "max_score": 6,
+      "description": "Equivocal score. CT scan recommended."
+    },
+    {
+      "min_score": 7,
+      "max_score": 10,
+      "description": "High risk of appendicitis. Surgical consultation recommended."
+    }
+  ],
+  "references": [
+    {
+      "citation": "Alvarado A. A practical score for the early diagnosis of acute appendicitis. Ann Emerg Med. 1986;15(5):557-564.",
+      "pmid": "3963537",
+      "url": "10.1016/s0196-0644(86)80993-3"
+    }
+  ],
+  "notes": "More accurate at extremes than for equivocal scores. Symptoms may overlap with other diseases such as diverticulitis or acute pelvic inflammatory disease. Several modifications of the score exist for specific settings such as pregnant patients, children, and low-resource settings, but the original Alvarado Score remains the best studied and validated in a general population. Coleman et al (2018) found that scores of 0 or 1 had 0% incidence of acute appendicitis, and that 100% of males with scores 9-10 and 100% of females with score 10 had acute appendicitis confirmed on surgical pathology."
+}

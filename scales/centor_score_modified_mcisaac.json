@@ -1,0 +1,106 @@
+{
+  "name": "Centor Score (Modified/McIsaac)",
+  "full_name": "Centor Score (Modified/McIsaac) for Strep Pharyngitis",
+  "description": "Estimates probability that pharyngitis is streptococcal, and suggests management course.",
+  "purpose": "Diagnosis, Rule Out, Treatment",
+  "when_to_use": [
+    "Patients with recent onset (≤3 days) acute pharyngitis",
+    "Primarly children with pharyngitis. The risk decreases significantly with age into adulthood"
+  ],
+  "when_not_to_use": [
+    "Patients with symptom duration longer than 3 days",
+    "Patients without recent onset acute pharyngitis"
+  ],
+  "tags": [
+    "strep pharyngitis",
+    "sore throat",
+    "Group A Streptococcus",
+    "GAS",
+    "pharyngitis",
+    "cough",
+    "fever"
+  ],
+  "category": "Infectious Disease",
+  "items": [
+    {
+      "label": "age_range",
+      "description": "Age",
+      "points": {
+        "3-14 years": 1,
+        "15-44 years": 0,
+        "≥45 years": -1
+      }
+    },
+    {
+      "label": "exudate_swelling",
+      "description": "Exudate or swelling on tonsils",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "lymph_nodes",
+      "description": "Tender/swollen anterior cervical lymph nodes",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "fever",
+      "description": "Temperature >38°C (100.4°F)",
+      "points": {
+        "No": 0,
+        "Yes": 1
+      }
+    },
+    {
+      "label": "cough",
+      "description": "Cough",
+      "points": {
+        "Cough present": 0,
+        "Cough absent": 1
+      }
+    }
+  ],
+  "constraints": [],
+  "formula": "age_range + exudate_swelling + lymph_nodes + fever + cough",
+  "min_score": -1,
+  "max_score": 5,
+  "interpretation": [
+    {
+      "min_score": -1,
+      "max_score": 0,
+      "description": "1-2.5% probability of strep pharyngitis. No further testing or antibiotics."
+    },
+    {
+      "min_score": 1,
+      "max_score": 1,
+      "description": "5-10% probability of strep pharyngitis. No further testing or antibiotics."
+    },
+    {
+      "min_score": 2,
+      "max_score": 2,
+      "description": "11-17% probability of strep pharyngitis. Optional rapid strep testing and/or culture."
+    },
+    {
+      "min_score": 3,
+      "max_score": 3,
+      "description": "28-35% probability of strep pharyngitis. Consider rapid strep testing and/or culture."
+    },
+    {
+      "min_score": 4,
+      "max_score": 5,
+      "description": "51-53% probability of strep pharyngitis. Consider rapid strep testing and/or culture. Empiric antibiotics may be appropriate depending on the specific scenario."
+    }
+  ],
+  "references": [
+    {
+      "citation": "McIsaac WJ, White D, Tannenbaum D, Low DE. A clinical score to reduce unnecessary antibiotic use in patients with sore throat. CMAJ. 1998 Jan 13;158(1):75-83.",
+      "pmid": "9475915",
+      "doi": null
+    }
+  ],
+  "notes": "Use only in patients with recent onset (≤3 days) acute pharyngitis. Strep pharyngitis is incredibly rare in patients under 3. 2012 IDSA guidelines no longer recommend empiric treatment alone; they recommend testing patients at higher risk for strep pharyngitis, but not giving antibiotics until a rapid test or throat culture is positive. A score of -1 is possible if the patient is ≥45 years with no other criteria present."
+}
