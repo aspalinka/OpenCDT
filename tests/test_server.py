@@ -1,4 +1,5 @@
 import json
+from typing import Mapping
 
 import pytest
 
@@ -18,7 +19,7 @@ WELLS_DVT_LABELS = [
 ]
 
 
-def _make_inputs(labels: list[str], values: dict[str, float | None] | None = None) -> list[ItemInput]:
+def _make_inputs(labels: list[str], values: Mapping[str, float | None] | None = None) -> list[ItemInput]:
     """Build a full list of ItemInput for a scale. Items not in values get value=None."""
     values = values or {}
     inputs = []
