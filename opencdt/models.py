@@ -39,7 +39,7 @@ class ScoreInterpretation(BaseModel):
     """Score range mapped to clinical interpretation."""
     min_score: Optional[float]
     max_score: Optional[float]
-    description: Optional[str]
+    description: str
 
 
 class MutualExclusivityConstraint(BaseModel):
@@ -106,7 +106,7 @@ class ClinicalScale(BaseModel):
     notes: Optional[str] = None
 
     # Cached dynamic input model (set in model_post_init)
-    _input_model: Type[BaseModel] = None  # type: ignore[assignment]
+    _input_model: Type[BaseModel] = None  # ty: ignore[invalid-assignment]
 
     model_config = {"arbitrary_types_allowed": True}
 
